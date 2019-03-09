@@ -119,23 +119,15 @@ jobs:
   production:
     executor: deploy_stage
     steps:
-      - setup_remote_docker:
-          reusable: true
       - checkout
       - attach_workspace:
           at: *workspace_root
       - run:
-          name: docker build
-          command: make -f .circleci/ci.mk docker/build
-      - run:
           name: aws login
           command: make -f .circleci/ci.mk login
       - run:
-          name: docker push
-          command: make -f .circleci/ci.mk docker/push
-      - run:
           name: deploy
-          command: make -f .circleci/ci.mk docker/deploy
+          command: make -f .circleci/ci.mk deploy
 
 workflows:
   build_and_deploy:
