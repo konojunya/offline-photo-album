@@ -3,7 +3,6 @@ const path = require("path");
 const CleanPlugin = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
-const WorkboxBuildWebpackPlugin = require('workbox-webpack-plugin');
 
 const IS_PRODUCTION = process.env.NODE_ENV === "production";
 
@@ -14,7 +13,9 @@ module.exports = {
     modules: ["node_modules"],
     extensions: [".js", ".jsx", ".json", ".ts", ".tsx"]
   },
-  entry: "./src/client.tsx",
+  entry: {
+    app: "./src/client.tsx"
+  },
   output: {
     path: path.resolve(__dirname, "./dist/"),
     filename: "[name]-[hash].bundle.js",
@@ -72,10 +73,6 @@ module.exports = {
     new webpack.optimize.ModuleConcatenationPlugin(),
     new HtmlWebpackPlugin({
       template: "./views/index.html"
-    }),
-    new WorkboxBuildWebpackPlugin({
-      cacheId: "offline-photo-album",
-
     })
   ]
 };
