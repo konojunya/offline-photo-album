@@ -1,12 +1,12 @@
 import * as React from "react";
-import { Title } from "./styles";
+import { Title, HeaderComponent } from "./styles";
 
 export class Header extends React.Component {
   public render() {
     return (
-      <header>
-        <Title>Header Component</Title>
-      </header>
+      <HeaderComponent>
+        <Title>Offline Photo Album</Title>
+      </HeaderComponent>
     );
   }
 }
