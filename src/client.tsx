@@ -12,6 +12,11 @@ const Routes = createRouter();
 const history = createBrowserHistory();
 const store = configureStore(history, {});
 
+/**
+ * ServiceWorker
+ */
+navigator.serviceWorker.register("./sw.js", { scope: "./" });
+
 render(
   <Provider store={store}>
     <BrowserRouter forceRefresh={!supportsHistory}>{Routes}</BrowserRouter>

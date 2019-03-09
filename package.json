@@ -1,8 +1,8 @@
 {
-  "name": "react-spa-boilerplate",
+  "name": "offline-photo-album",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "ssh://git@github.com/konojunya/react-spa-boilerplate.git",
+  "repository": "ssh://git@github.com/konojunya/offline-photo-album.git",
   "author": "konojunya <junya03dance@gmail.com>",
   "license": "MIT",
   "scripts": {
@@ -69,6 +69,7 @@
     "tslint-react": "^3.6.0",
     "typescript": "^3.2.2",
     "webpack": "^4.28.0",
-    "webpack-cli": "^3.1.2"
+    "webpack-cli": "^3.1.2",
+    "workbox-webpack-plugin": "^4.1.0"
   }
 }
