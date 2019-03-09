@@ -17,7 +17,7 @@ interface Props {
 class Index extends React.Component<Props> {
   public componentDidMount() {
     this.props.fetchImages({
-      limit: 10
+      limit: 20
     });
   }
 
