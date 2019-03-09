@@ -1,5 +1,5 @@
 import { default as React, lazy, Suspense } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, RouteProps } from "react-router-dom";
 import { Loading } from "../components/modules/Loading";
 
 // layout
@@ -13,7 +13,7 @@ const WaitingComponent = (Component: any) => {
   );
 };
 
-const routes = [
+const routes: RouteProps[] = [
   {
     exact: true,
     path: "/",
@@ -31,7 +31,8 @@ export const createRouter = () => {
     <AppLayout>
       <Switch>
         {routes.map((route, index) => (
-          <Route {...route} key={index} />
+          <Route {...route} key={index}
+          />
         ))}
       </Switch>
     </AppLayout>

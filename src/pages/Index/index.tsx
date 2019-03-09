@@ -1,13 +1,37 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { RootState } from "../../context/reducer";
+import { ReduxAPIStruct } from "redux-api-struct";
+import { FetchImagesResponse } from "../../api-types/response";
+import { dispatchable } from "../../context/utils/DispatchUtils";
+import { fetchImages } from "../../context/modules/Image/actions/FetchImages";
+import { pageBuild } from "../../utils/pageBuild";
+import { IndexTemplate } from "../../components/Templates/Index";
 
-export default class Index extends React.Component {
+interface Props {
+  images: ReduxAPIStruct<FetchImagesResponse>
+  fetchImages: typeof fetchImages;
+}
+
+class Index extends React.Component<Props> {
+  public componentDidMount() {
+    this.props.fetchImages({
+      limit: 10
+    });
+  }
+
   public render() {
-    return (
-      <>
-        <h1>Hello from React.js</h1>
-        <Link to="/about">to about page</Link>
-      </>
-    );
+    const { images } = this.props;
+    return pageBuild(images, <IndexTemplate images={images.data} />);
   }
 }
+
+export default withRouter(connect(
+  (state: RootState) => ({
+    images: state.imageReducer.images
+  }),
+  (dispatch => ({
+    fetchImages: dispatchable(dispatch, fetchImages)
+  }))
+)(Index) as any)
