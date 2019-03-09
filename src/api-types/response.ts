@@ -18,3 +18,8 @@ export interface FetchImagesResponse {
     images: Image[];
   }
 }
+
+export interface FetchImageByIdResponse {
+  ok: boolean;
+  data: Image;
+}

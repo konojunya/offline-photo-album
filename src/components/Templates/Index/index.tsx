@@ -32,8 +32,8 @@ const ListItemImg = styled.img`
 export const IndexTemplate = (props: Props) => (
   <List>
     {props.images.data.images.map((image, index) => (
-      <Link to={`/${image.id}`}>
-        <ListItem key={`image-list-${index}`}>
+      <Link to={`/${image.id}`} key={`image-list-${index}`}>
+        <ListItem>
           <LazyLoad height={100}>
             <ListItemImg src={image.url} />
           </LazyLoad>

@@ -21,8 +21,8 @@ const routes: RouteProps[] = [
   },
   {
     exact: false,
-    path: "/about",
-    component: WaitingComponent(lazy(() => import("../pages/About")))
+    path: "/:id",
+    component: WaitingComponent(lazy(() => import("../pages/Detail")))
   }
 ];
 
