@@ -9,4 +9,4 @@ export interface Params {
 
 export const fetchImages = (params: Partial<Params>) => {
   return apiClient.get<FetchImagesResponse>(`/images?${qs.stringify(params)}`);
-}
+};

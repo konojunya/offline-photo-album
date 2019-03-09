@@ -7,7 +7,11 @@ import { FetchImageByIdResponse } from "../../../../api-types/response";
 /**
  * FetchImageById
  */
-export const fetchImageByIdAction = actionCreator.async<void, FetchImageByIdResponse, ReduxAPIError>("FETCH_IMAGE_BY_ID");
+export const fetchImageByIdAction = actionCreator.async<
+  void,
+  FetchImageByIdResponse,
+  ReduxAPIError
+>("FETCH_IMAGE_BY_ID");
 
 export function fetchImageById(id: string): ThunkAction<void, any> {
   return async (dispatch, getState, { api }) => {
@@ -15,36 +19,46 @@ export function fetchImageById(id: string): ThunkAction<void, any> {
     if (!ReduxAPIState.isSuccess(imageReducer.images.status)) {
       const res = await api.fetchImageById(id);
       if (res.status !== 200) {
-        dispatch(fetchImageByIdAction.failed({
-          error: {
-            statusCode: res.status
-          }
-        }))
+        dispatch(
+          fetchImageByIdAction.failed({
+            error: {
+              statusCode: res.status
+            }
+          })
+        );
         return;
       }
 
-      dispatch(fetchImageByIdAction.done({
-        result: res.data
-      }))
+      dispatch(
+        fetchImageByIdAction.done({
+          result: res.data
+        })
+      );
       return;
     }
 
-    const image = imageReducer.images.data.data.images.find((img) => img.id === id);
+    const image = imageReducer.images.data.data.images.find(
+      img => img.id === id
+    );
 
     if (!image) {
-      dispatch(fetchImageByIdAction.failed({
-        error: {
-          statusCode: 404
-        }
-      }))
+      dispatch(
+        fetchImageByIdAction.failed({
+          error: {
+            statusCode: 404
+          }
+        })
+      );
       return;
     }
 
-    dispatch(fetchImageByIdAction.done({
-      result: {
-        ok: true,
-        data: image
-      }
-    }));
-  }
+    dispatch(
+      fetchImageByIdAction.done({
+        result: {
+          ok: true,
+          data: image
+        }
+      })
+    );
+  };
 }

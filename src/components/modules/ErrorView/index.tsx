@@ -9,8 +9,8 @@ export const ErrorView = (props: Props) => {
     case 500:
       return <p>500</p>;
     case 404:
-      return <p>404 not found</p>
+      return <p>404 not found</p>;
     default:
-      return <p>エラー</p>
+      return <p>エラー</p>;
   }
-}
+};

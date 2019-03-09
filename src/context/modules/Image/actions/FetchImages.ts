@@ -8,7 +8,11 @@ import { FetchImagesResponse } from "../../../../api-types/response";
 /**
  * FetchImages
  */
-export const fetchImagesAction = actionCreator.async<void, FetchImagesResponse, ReduxAPIError>("FETCH_IMAGES");
+export const fetchImagesAction = actionCreator.async<
+  void,
+  FetchImagesResponse,
+  ReduxAPIError
+>("FETCH_IMAGES");
 
 export function fetchImages(params: Partial<Params>): ThunkAction<void, any> {
   return async (dispatch, getState, { api }) => {
@@ -17,17 +21,21 @@ export function fetchImages(params: Partial<Params>): ThunkAction<void, any> {
 
       const res = await api.fetchImages(params);
       if (res.status !== 200) {
-        dispatch(fetchImagesAction.failed({
-          error: {
-            statusCode: res.status
-          }
-        }))
+        dispatch(
+          fetchImagesAction.failed({
+            error: {
+              statusCode: res.status
+            }
+          })
+        );
         return;
       }
 
-      dispatch(fetchImagesAction.done({
-        result: res.data
-      }))
+      dispatch(
+        fetchImagesAction.done({
+          result: res.data
+        })
+      );
     }
-  }
+  };
 }

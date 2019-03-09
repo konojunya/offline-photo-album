@@ -6,13 +6,13 @@ import { pageBuild } from "../../utils/pageBuild";
 import { ReduxAPIStruct } from "redux-api-struct";
 import { withRouter, match } from "react-router";
 import { DetailTemplate } from "../../components/Templates/Detail";
-import { fetchImageById } from "../../context/modules/Image/actions/FetchImageById"
+import { fetchImageById } from "../../context/modules/Image/actions/FetchImageById";
 import { dispatchable } from "../../context/utils/DispatchUtils";
 
 interface Props {
   detail: ReduxAPIStruct<FetchImageByIdResponse>;
   fetchImageById: typeof fetchImageById;
-  match: match<{ id: string }>
+  match: match<{ id: string }>;
 }
 
 class Detail extends React.Component<Props> {
@@ -21,7 +21,7 @@ class Detail extends React.Component<Props> {
   }
   public render() {
     const { detail } = this.props;
-    return pageBuild(detail, <DetailTemplate detail={detail.data} />)
+    return pageBuild(detail, <DetailTemplate detail={detail.data} />);
   }
 }
 
@@ -29,7 +29,7 @@ export default withRouter(connect(
   (state: RootState) => ({
     detail: state.imageReducer.detail
   }),
-  (dispatch) => ({
+  dispatch => ({
     fetchImageById: dispatchable(dispatch, fetchImageById)
   })
 )(Detail) as any);

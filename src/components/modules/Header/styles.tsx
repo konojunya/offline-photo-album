@@ -10,4 +10,4 @@ export const Title = styled.h1`
 export const HeaderComponent = styled.header`
   position: sticky;
   top: 0;
-`
+`;

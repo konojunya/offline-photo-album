@@ -2,8 +2,16 @@ import { reducerWithInitialState } from "typescript-fsa-reducers";
 import { fetchImagesAction } from "../actions/FetchImages";
 import { fetchImageByIdAction } from "../actions/FetchImageById";
 
-import { ReduxAPIState, ReduxAPIStruct, createDefaultStruct, errorDefault } from "redux-api-struct";
-import { FetchImagesResponse, FetchImageByIdResponse } from "../../../../api-types/response";
+import {
+  ReduxAPIState,
+  ReduxAPIStruct,
+  createDefaultStruct,
+  errorDefault
+} from "redux-api-struct";
+import {
+  FetchImagesResponse,
+  FetchImageByIdResponse
+} from "../../../../api-types/response";
 
 export interface ImageState {
   images: ReduxAPIStruct<FetchImagesResponse>;
@@ -13,13 +21,13 @@ export interface ImageState {
 export const initialState: ImageState = {
   images: createDefaultStruct(),
   detail: createDefaultStruct()
-}
+};
 
 export const imageReducer = reducerWithInitialState(initialState)
   /**
    * FetchImaegs
    */
-  .case(fetchImagesAction.started, (state) => ({
+  .case(fetchImagesAction.started, state => ({
     ...state,
     images: {
       ...state.images,
@@ -46,7 +54,7 @@ export const imageReducer = reducerWithInitialState(initialState)
   /**
    * FetchImageById
    */
-  .case(fetchImageByIdAction.started, (state) => ({
+  .case(fetchImageByIdAction.started, state => ({
     ...state,
     detail: {
       ...state.detail,
@@ -69,4 +77,4 @@ export const imageReducer = reducerWithInitialState(initialState)
       status: ReduxAPIState.FAILURE,
       error: action.error
     }
-  }))
+  }));

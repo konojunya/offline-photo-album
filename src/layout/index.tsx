@@ -13,15 +13,18 @@ interface State {
 }
 
 export class AppLayout extends React.Component<Props, State> {
-  state: State = {
+  public state: State = {
     hasError: false
-  }
+  };
 
   public componentDidUpdate(prev: Props) {
-    if (this.state.hasError && !shallowequal(this.props.children, prev.children)) {
+    if (
+      this.state.hasError &&
+      !shallowequal(this.props.children, prev.children)
+    ) {
       this.setState({
         hasError: false
-      })
+      });
     }
   }
 
@@ -38,8 +41,8 @@ export class AppLayout extends React.Component<Props, State> {
         {this.state.hasError ? (
           <ErrorView statusCode={999} />
         ) : (
-            <MainContainer>{this.props.children}</MainContainer>
-          )}
+          <MainContainer>{this.props.children}</MainContainer>
+        )}
       </>
     );
   }

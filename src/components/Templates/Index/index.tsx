@@ -1,8 +1,8 @@
 import * as React from "react";
 import { FetchImagesResponse } from "../../../api-types/response";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-import LazyLoad from 'react-lazyload';
+import LazyLoad from "react-lazyload";
 
 interface Props {
   images: FetchImagesResponse;
@@ -41,4 +41,4 @@ export const IndexTemplate = (props: Props) => (
       </Link>
     ))}
   </List>
-)
+);

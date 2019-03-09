@@ -10,7 +10,7 @@ import { pageBuild } from "../../utils/pageBuild";
 import { IndexTemplate } from "../../components/Templates/Index";
 
 interface Props {
-  images: ReduxAPIStruct<FetchImagesResponse>
+  images: ReduxAPIStruct<FetchImagesResponse>;
   fetchImages: typeof fetchImages;
 }
 
@@ -31,7 +31,7 @@ export default withRouter(connect(
   (state: RootState) => ({
     images: state.imageReducer.images
   }),
-  (dispatch => ({
+  dispatch => ({
     fetchImages: dispatchable(dispatch, fetchImages)
-  }))
-)(Index) as any)
+  })
+)(Index) as any);

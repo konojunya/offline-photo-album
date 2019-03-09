@@ -1,7 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Loading component testing Loading component snapshot 1`] = `
-<p>
-  loading...
-</p>
+<div
+  className="sc-bdVaJa drLmTw"
+>
+  <p
+    className="sc-bwzfXH eLhiJr"
+  >
+    NOW LOADING...
+  </p>
+</div>
 `;

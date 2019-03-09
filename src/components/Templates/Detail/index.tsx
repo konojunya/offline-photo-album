@@ -32,7 +32,7 @@ const ToTopLink = styled(Link)`
 `;
 
 export const DetailTemplate = (props: Props) => {
-  const { data } = props.detail
+  const { data } = props.detail;
   return (
     <>
       <Head1>{data.title}</Head1>
@@ -42,5 +42,5 @@ export const DetailTemplate = (props: Props) => {
       </ImageWrap>
       <ToTopLink to="/">戻る</ToTopLink>
     </>
-  )
-}
+  );
+};

@@ -31,8 +31,7 @@ export const createRouter = () => {
     <AppLayout>
       <Switch>
         {routes.map((route, index) => (
-          <Route {...route} key={index}
-          />
+          <Route {...route} key={index} />
         ))}
       </Switch>
     </AppLayout>

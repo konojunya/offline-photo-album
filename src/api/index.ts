@@ -6,6 +6,6 @@ const apiClient: AxiosInstance = axios.create({
   timeout: config.API_TIMEOUT
 });
 
-apiClient.interceptors.response.use((res) => res, err => err.response);
+apiClient.interceptors.response.use(res => res, err => err.response);
 
 export { apiClient };
