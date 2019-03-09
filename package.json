@@ -9,6 +9,7 @@
     "dev": "yarn build --watch & yarn serve",
     "serve": "serve dist --single",
     "build": "webpack-cli",
+    "postbuild:prod": "cp ./src/sw.js ./dist/sw.js",
     "build:prod": "env NODE_ENV=production yarn build",
     "lint": "tslint -c tslint.json -p tsconfig.json -t verbose 'src/**/*.{ts,tsx}'",
     "test": "jest -i --verbose",
