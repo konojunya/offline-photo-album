@@ -15,9 +15,9 @@ const store = configureStore(history, {});
 /**
  * ServiceWorker
  */
-navigator.serviceWorker.register("./sw.js", { scope: "./" }).then((reg) => {
-  reg.update();
-});
+// navigator.serviceWorker.register("./sw.js", { scope: "./" }).then((reg) => {
+//   reg.update();
+// });
 
 render(
   <Provider store={store}>
