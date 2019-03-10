@@ -2,23 +2,18 @@ const VERSION = "1"
 const CACHE_NAME = "offline-photo-album-" + VERSION;
 
 self.addEventListener("fetch", (e) => {
-  const requestURL = e.request.url;
-  if (requestURL === "https://wfc-2019.firebaseapp.com/images?limit=20") {
-    e.respondWith((async () => {
-      const cachedResponse = await caches.match(requestURL);
-      if (cachedResponse) {
-        return cachedResponse;
-      }
+  e.respondWith((async () => {
+    const cache = await caches.open(CACHE_NAME);
+    const cachedResponse = await cache.match(e.request);
+    const networkResponsePromise = fetch(e.request);
 
-      const cache = await caches.open(CACHE_NAME);
-      const res = await fetch(requestURL);
-      if (res.ok) {
-        cache.put(requestURL, res);
-      }
-
-      return res;
+    e.waitUntil((async () => {
+      const networkResponse = await networkResponsePromise;
+      await cache.put(e.request, networkResponse.clone());
     })());
-  }
+
+    return cachedResponse || networkResponsePromise;
+  })());
 })
 
 const CACHE_KEYS = [
